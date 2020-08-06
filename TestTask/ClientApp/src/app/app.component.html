@@ -1,0 +1,13 @@
+<html>
+  <body>
+    <header class="header1">
+      <nav>
+        <p class="p1"> TestTask: Choose your entity to work with </p>
+      </nav>
+      <input style="margin-left: 12%;" type="button" class="navBut" value="Project" (click)="Project()">
+      <input type="button" class="navBut" value="Activity" (click)="Activity()">
+    </header>
+    <project-component style="margin-top: 30%;" *ngIf="projectcomp"> </project-component>
+    <activity-component *ngIf="activitycomp"> </activity-component>
+  </body>
+</html>

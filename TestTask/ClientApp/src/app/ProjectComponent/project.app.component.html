@@ -1,0 +1,63 @@
+    <div>
+        <h1>Список проектов</h1>
+        <input type="button" value="Добавить" (click)="add()" />
+        <table *ngIf="tableMode; else create" >
+            <thead>
+                <tr>
+                    <td>Название</td>
+                    <td>Дата начала</td>
+                    <td>Дата окончяния</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of projects">
+                    <ng-template [ngIf]="project?.id != p.id" [ngIfElse]="edit">
+                        <td>{{p?.name}}</td>
+                        <td>{{p?.dateStart | date:'shortDate'}}</td>
+                        <td>{{p?.dateEnd | date:'shortDate'}}</td>
+                        <td>
+                            <button (click)="updateProject(p)">Изменить</button>
+                        <button (click)="delete(p)">Удалить</button>
+                        </td>
+                    </ng-template>
+                </tr>
+            </tbody>
+    </table>
+ 
+        <ng-template #edit>
+            <td>
+                <input type="text" [(ngModel)]="project.name" />
+            </td>
+            <td>
+                <input type="date" [(ngModel)]="project.dateStart" />
+            </td>
+            <td>
+                <input type="date" [(ngModel)]="project.dateEnd" />
+            </td>
+            <td>
+                <input type="button" value="Сохранить" (click)="editProject(project)" />
+                <input type="button" value="Отмена" (click)="cancel()"  />
+            </td>
+        </ng-template>
+        
+        <!--шаблон для добавления-->
+        <ng-template #create>
+            <div class="form-group">
+                <label>Название</label>
+                <input type="text" [(ngModel)]="project.name"  />
+            </div>
+            <div class="form-group">
+                <label>Дата начала</label>
+                <input type="date" [(ngModel)]="project.dateStart"  />
+            </div>
+            <div class="form-group">
+                <label>Дата окончания</label>
+                <input type="date" [(ngModel)]="project.dateEnd"  />
+            </div>
+            <div>
+                <input type="button" value="Сохранить" (click)="createProject(project)" />
+                <input type="button" value="Отмена" (click)="cancel()" />
+            </div>
+        </ng-template>
+    </div> 

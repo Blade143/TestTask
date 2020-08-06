@@ -1,0 +1,29 @@
+<div>
+    <p> Input person id: </p>
+    <input type="number" [(ngModel)]="idWeekRequest.personId"> 
+    <p> Input weeknumber: </p>
+    <input type="number" [(ngModel)]="idWeekRequest.weekNumber"> 
+    <input type="button" value="Get Activities" (click) = "GetWeekAktivities()" > 
+    <div *ngIf="weekActivities">
+        <div *ngFor="let a of weekActivities">
+            <p>
+                {{ a.satrtDate}} as a "{{a.role}}"  {{a.personName}} worked on the "{{a.project}}"
+                 {{a.hoursOfWork}} hours {{a.actovityType}}
+            </p>
+        </div>>
+    </div>
+    <hr>
+    <p> Input person id: </p>
+        <input type="number" [(ngModel)]="idDateRequest.personId"> 
+        <p> Input date: </p>
+        <input type="date" [(ngModel)]="idDateRequest.date"> 
+        <input type="button" value="Get Activities" (click) = "GetDateAktivities()" > 
+        <div *ngIf="dateactivity">
+            <div *ngFor="let a of dateactivity">
+                <p>
+                    {{ a.satrtDate}} as a "{{a.role}}"  {{a.personName}} worked on the "{{a.project}}"
+                     {{a.hoursOfWork}} hours {{a.actovityType}}
+                </p>
+            </div>
+        </div>
+</div>
